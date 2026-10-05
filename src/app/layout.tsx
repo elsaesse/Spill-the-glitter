@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Anton, Manrope, Yellowtail } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { PageTransition } from "@/components/PageTransition";
 import { SITE_NAME } from "@/lib/site";
 import "./globals.css";
 
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main>{children}</main>
         <Footer />
+        <PageTransition />
       </body>
     </html>
   );

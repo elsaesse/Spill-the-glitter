@@ -13,3 +13,9 @@ export const NAV_LINKS = [
 
 /** Pages à fond rouge : le header y est adapté tant qu'on est en haut. */
 export const RED_PAGES: readonly string[] = ["/", "/reserver"];
+
+/** Nom affiché sur le rideau de transition, par route. */
+export const PAGE_LABELS: Record<string, string> = {
+  "/": "Accueil",
+  ...Object.fromEntries(NAV_LINKS.map((l) => [l.href, l.label])),
+};
