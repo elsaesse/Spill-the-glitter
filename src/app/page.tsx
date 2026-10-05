@@ -4,9 +4,10 @@ import { BookSticker } from "@/components/BookSticker";
 import { Parallax } from "@/components/Parallax";
 import { Reveal } from "@/components/Reveal";
 import logo from "@/assets/logo-charm.webp";
-import post1 from "@/assets/post-1.webp";
-import post3 from "@/assets/post-3.webp";
-import post4 from "@/assets/post-4.webp";
+import frenchRose from "@/assets/photos/french-rose.webp";
+import salon from "@/assets/photos/salon.webp";
+import setsColores from "@/assets/photos/sets-colores.webp";
+import setsPois from "@/assets/photos/sets-pois.webp";
 import { INSTAGRAM_URL, PLANITY_URL, SITE_NAME } from "@/lib/site";
 
 const teasers: {
@@ -15,13 +16,13 @@ const teasers: {
   title: string;
   img: StaticImageData;
 }[] = [
-  { href: "/a-propos", tag: "À propos", title: "Qui est Elsa ?", img: post1 },
-  { href: "/realisations", tag: "Réalisations", title: "Les sets", img: post3 },
+  { href: "/a-propos", tag: "À propos", title: "Qui est Elsa ?", img: salon },
+  { href: "/realisations", tag: "Réalisations", title: "Les sets", img: setsColores },
   {
     href: "/prestations",
     tag: "Prestations",
     title: "La carte & tarifs",
-    img: post4,
+    img: frenchRose,
   },
 ];
 
@@ -163,8 +164,8 @@ export default function Home() {
           <div className="relative aspect-square w-full max-w-[520px] justify-self-center">
             <div className="absolute inset-0 overflow-hidden rounded-full border-[6px] border-black">
               <Image
-                src={post3}
-                alt="Set press-on léopard et pois"
+                src={setsPois}
+                alt="Set de nail art léopard et pois"
                 fill
                 sizes="(min-width: 900px) 520px, 90vw"
                 className="object-cover"

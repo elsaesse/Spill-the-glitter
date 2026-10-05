@@ -40,6 +40,11 @@ export function Footer() {
           </div>
         </div>
       </footer>
+      <div className="border-t border-line-soft">
+        <p className="mx-auto m-0 max-w-[1440px] px-page py-5 text-center text-[13px] text-subtle">
+          © 2026 Spill the Glitter. Tous droits réservés.
+        </p>
+      </div>
     </>
   );
 }

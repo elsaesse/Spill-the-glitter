@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { Tilt } from "@/components/Tilt";
+import elsa from "@/assets/photos/elsa.webp";
 import { INSTAGRAM_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -82,10 +84,14 @@ export default function AProposPage() {
 
         <Reveal n={2} className="relative aspect-[4/5] w-full max-w-[560px] justify-self-center">
           <Tilt className="absolute inset-0 overflow-hidden rounded-[280px_280px_28px_28px] bg-surface">
-            {/* TODO: remplacer par la photo d'Elsa (portrait à fournir par la cliente). */}
-            <div className="flex size-full items-center justify-center p-8 text-center font-script text-[clamp(28px,3vw,40px)] leading-tight text-subtle">
-              Portrait d&apos;Elsa au travail
-            </div>
+            <Image
+              src={elsa}
+              alt="Portrait d'Elsa"
+              fill
+              priority
+              sizes="(min-width: 1440px) 560px, (min-width: 900px) 40vw, 90vw"
+              className="object-cover"
+            />
           </Tilt>
         </Reveal>
       </section>
