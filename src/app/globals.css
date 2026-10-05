@@ -1,26 +1,120 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-red: #c4161c;
+  --color-red-bright: #ff4d4d;
+  --color-red-hover: #e01e26;
+  --color-black: #0e0a0b;
+  --color-surface: #1a1214;
+  --color-cream: #f6eee6;
+  --color-muted: #cdbfb8;
+  --color-subtle: #a8978f;
+  --color-on-cream: #4a3a3d;
+  --color-line: #3a2c2f;
+  --color-line-soft: #2a1f21;
+  --color-chip: #5a474b;
+  --color-gold: #e6c27a;
+  --color-blush: #ffb3b3;
+
+  --font-display: var(--font-anton), sans-serif;
+  --font-script: var(--font-yellowtail), cursive;
+  --font-sans: var(--font-manrope), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@utility px-page {
+  padding-inline: clamp(18px, 4vw, 48px);
+}
+
+@utility py-section {
+  padding-block: clamp(80px, 10vw, 140px);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--color-black);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-red);
+  color: #fff;
+}
+
+/* Reveal au scroll : état initial, puis `is-visible` posé par <Reveal>. */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px) rotate(var(--rv-rot, -2.5deg)) scale(0.96);
+  transition:
+    opacity 0.8s ease var(--rv-delay, 0s),
+    transform 1s cubic-bezier(0.3, 1.5, 0.5, 1) var(--rv-delay, 0s);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes stg-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stg-neon {
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow:
+      0 0 6px #ff3b3b,
+      0 0 22px #ff1a1a,
+      0 0 48px #c4161c;
+  }
+  47% {
+    opacity: 1;
+  }
+  48% {
+    opacity: 0.55;
+    text-shadow: none;
+  }
+  50% {
+    opacity: 1;
+  }
+  52% {
+    opacity: 0.7;
+  }
+  53% {
+    opacity: 1;
+  }
+}
+
+.animate-stg-spin {
+  animation: stg-spin 12s linear infinite;
+}
+
+.animate-stg-neon {
+  animation: stg-neon 7s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-stg-spin,
+  .animate-stg-neon {
+    animation: none;
+  }
 }
