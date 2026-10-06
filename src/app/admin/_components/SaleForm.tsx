@@ -8,7 +8,7 @@ import {
   type CatalogueService,
   type PaymentMethod,
 } from "@/lib/caisse/constants";
-import { centsToInput, formatEuros } from "@/lib/caisse/format";
+import { centsToInput, formatPrice } from "@/lib/caisse/format";
 import {
   cardClass,
   chipClass,
@@ -109,8 +109,7 @@ export function SaleForm({
                       className={chipClass(picked?.id === service.id)}
                     >
                       {service.name} ·{" "}
-                      {service.price_is_from && "dès "}
-                      {formatEuros(service.price_cents).replace(",00", "")}
+                      {formatPrice(service.price_cents, service.price_is_from)}
                     </button>
                   ))}
                 </div>

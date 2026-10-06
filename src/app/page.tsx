@@ -155,7 +155,7 @@ export default function Home() {
               mesure à vos tailles et réutilisable.
             </p>
             <Link
-              href="/prestations?cat=press-on"
+              href="/prestations"
               className="self-start border-b-2 border-red pb-1 text-sm font-extrabold uppercase tracking-[.08em] text-black transition-colors hover:text-red"
             >
               Voir les tarifs →

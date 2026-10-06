@@ -1,15 +1,21 @@
 import type { Metadata } from "next";
 import { PrestationsList } from "@/components/PrestationsList";
 import { Reveal } from "@/components/Reveal";
+import { getPublicCatalogue } from "@/lib/catalogue";
 import { PLANITY_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Prestations",
   description:
-    "La carte et les tarifs de Spill the Glitter à Saint-Étienne : mains, pieds, nail art, press-on et make up. Réservation sur Planity.",
+    "La carte et les tarifs de Spill the Glitter à Saint-Étienne : poses, entretien des mains, pieds et soins. Réservation sur Planity.",
 };
 
-export default function PrestationsPage() {
+// La carte vient de la base : la page est régénérée toutes les 5 minutes.
+export const revalidate = 300;
+
+export default async function PrestationsPage() {
+  const categories = await getPublicCatalogue();
+
   return (
     <section className="mx-auto flex max-w-[1180px] flex-col gap-11 px-page pt-[clamp(130px,16vw,190px)] pb-[clamp(80px,10vw,140px)]">
       <div className="flex flex-col gap-3">
@@ -29,7 +35,7 @@ export default function PrestationsPage() {
       </div>
 
       <Reveal n={3} className="flex flex-col gap-11">
-        <PrestationsList />
+        <PrestationsList categories={categories} />
       </Reveal>
 
       <Reveal

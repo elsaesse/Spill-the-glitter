@@ -19,3 +19,8 @@ export function centsToInput(cents: number): string {
   const s = (cents / 100).toFixed(2).replace(".", ",");
   return s.endsWith(",00") ? s.slice(0, -3) : s;
 }
+
+/** "65 €", "25,50 €" ou "dès 85 €" : sans les centimes inutiles. */
+export function formatPrice(cents: number, isFrom = false): string {
+  return `${isFrom ? "dès " : ""}${formatEuros(cents).replace(",00", "")}`;
+}
