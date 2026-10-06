@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Anton, Manrope, Yellowtail } from "next/font/google";
 import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
-import { PageTransition } from "@/components/PageTransition";
+import { SiteChrome } from "@/components/SiteChrome";
 import { SITE_NAME } from "@/lib/site";
 import "./globals.css";
 
@@ -55,10 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {/* Sans JS, le reveal au scroll ne se déclencherait jamais. */}
           <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <PageTransition />
+        <SiteChrome footer={<Footer />}>{children}</SiteChrome>
       </body>
     </html>
   );
