@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const arrow =
-  "grid size-12 place-items-center rounded-2xl bg-wine/30 text-2xl text-rose transition-colors hover:bg-wine/50";
+  "grid size-12 place-items-center rounded-full bg-red text-2xl font-extrabold text-white transition-colors hover:bg-red-hover";
 
 export function MonthNav({
   label,
@@ -13,11 +13,13 @@ export function MonthNav({
   nextHref: string;
 }) {
   return (
-    <div className="flex items-center justify-between rounded-[24px] border border-plum-line bg-plum p-2">
+    <div className="flex items-center justify-between rounded-full border-[1.5px] border-chip p-1.5">
       <Link href={prevHref} aria-label="Période précédente" className={arrow}>
         ‹
       </Link>
-      <p className="text-xl font-extrabold text-white">{label}</p>
+      <p className="font-display text-[26px] tracking-[.04em] text-cream uppercase">
+        {label}
+      </p>
       <Link href={nextHref} aria-label="Période suivante" className={arrow}>
         ›
       </Link>

@@ -12,6 +12,8 @@ import {
   fieldClass,
   labelClass,
   primaryButtonClass,
+  scriptClass,
+  titleClass,
 } from "./ui";
 
 export function ExpenseForm({ today }: { today: string }) {
@@ -47,7 +49,8 @@ export function ExpenseForm({ today }: { today: string }) {
 
   return (
     <form onSubmit={submit} className={cardClass}>
-      <h2 className="text-[26px] font-extrabold text-white">Nouvelle dépense</h2>
+      <p className={scriptClass}>on note tout</p>
+      <h2 className={`${titleClass} mt-2`}>Nouvelle dépense</h2>
 
       <div className="mt-5 space-y-5">
         <label className="block">
@@ -69,9 +72,9 @@ export function ExpenseForm({ today }: { today: string }) {
               onChange={(e) => setAmount(e.target.value)}
               inputMode="decimal"
               placeholder="0,00"
-              className={`${fieldClass} pr-12 text-[26px] font-extrabold`}
+              className={`${fieldClass} pr-12 font-display text-[30px]`}
             />
-            <span className="pointer-events-none absolute top-1/2 right-5 -translate-y-1/2 text-2xl font-extrabold text-blush/70">
+            <span className="pointer-events-none absolute top-1/2 right-5 -translate-y-1/2 font-display text-3xl text-red-bright">
               €
             </span>
           </div>
@@ -117,13 +120,13 @@ export function ExpenseForm({ today }: { today: string }) {
         </label>
 
         {error && (
-          <p role="alert" className="text-[15px] text-blush">
+          <p role="alert" className="text-[15px] font-semibold text-red-bright">
             {error}
           </p>
         )}
         {saved && (
-          <p role="status" className="text-[15px] text-mint">
-            Dépense enregistrée ✨
+          <p role="status" className="text-[15px] font-semibold text-gold">
+            Dépense enregistrée ✦
           </p>
         )}
 

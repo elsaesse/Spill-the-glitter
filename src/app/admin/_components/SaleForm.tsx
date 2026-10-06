@@ -15,6 +15,8 @@ import {
   fieldClass,
   labelClass,
   primaryButtonClass,
+  scriptClass,
+  titleClass,
 } from "./ui";
 
 type Picked = { id: string; label: string };
@@ -85,15 +87,16 @@ export function SaleForm({
 
   return (
     <form onSubmit={submit} className={cardClass}>
-      <h2 className="text-[26px] font-extrabold text-white">Nouvelle prestation</h2>
+      <p className={scriptClass}>à encaisser</p>
+      <h2 className={`${titleClass} mt-2`}>Nouvelle prestation</h2>
 
       <div className="mt-5 space-y-5">
         <div>
           <span className={labelClass}>Prestation</span>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {catalogue.map((category) => (
               <fieldset key={category.id}>
-                <legend className="mb-2 flex items-center gap-2 text-[15px] font-bold tracking-wide text-muted uppercase">
+                <legend className="mb-3 flex items-center gap-2 text-[14px] font-extrabold tracking-[.1em] text-muted uppercase">
                   <span aria-hidden>{category.emoji}</span> {category.label}
                 </legend>
                 <div className="flex flex-wrap gap-2.5">
@@ -133,9 +136,9 @@ export function SaleForm({
               onChange={(e) => setPrice(e.target.value)}
               inputMode="decimal"
               placeholder="0,00"
-              className={`${fieldClass} pr-12 text-[26px] font-extrabold`}
+              className={`${fieldClass} pr-12 font-display text-[30px]`}
             />
-            <span className="pointer-events-none absolute top-1/2 right-5 -translate-y-1/2 text-2xl font-extrabold text-blush/70">
+            <span className="pointer-events-none absolute top-1/2 right-5 -translate-y-1/2 font-display text-3xl text-red-bright">
               €
             </span>
           </div>
@@ -181,18 +184,18 @@ export function SaleForm({
         </fieldset>
 
         {error && (
-          <p role="alert" className="text-[15px] text-blush">
+          <p role="alert" className="text-[15px] font-semibold text-red-bright">
             {error}
           </p>
         )}
         {saved && (
-          <p role="status" className="text-[15px] text-mint">
-            Prestation encaissée ✨
+          <p role="status" className="text-[15px] font-semibold text-gold">
+            Prestation encaissée ✦
           </p>
         )}
 
         <button type="submit" disabled={pending} className={primaryButtonClass}>
-          {pending ? "Enregistrement…" : "Encaisser ✨"}
+          {pending ? "Enregistrement…" : "Encaisser ✦"}
         </button>
       </div>
     </form>

@@ -9,7 +9,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
   const sales = await getSales(today, nextDay(today)).catch(() => []);
 
   return (
-    <div className="mx-auto min-h-dvh max-w-xl pb-32">
+    <div className="mx-auto min-h-dvh max-w-2xl pb-32">
       <AppHeader
         date={formatLongDate(today)}
         todayCents={sales.reduce((sum, s) => sum + s.amount_cents, 0)}

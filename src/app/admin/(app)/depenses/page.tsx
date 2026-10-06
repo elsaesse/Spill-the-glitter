@@ -1,7 +1,12 @@
 import { ExpenseForm } from "../../_components/ExpenseForm";
 import { MonthNav } from "../../_components/MonthNav";
-import { ExpenseRow } from "../../_components/Rows";
-import { cardClass } from "../../_components/ui";
+import { ExpenseRow, listClass } from "../../_components/Rows";
+import {
+  cardClass,
+  pillClass,
+  scriptClass,
+  titleClass,
+} from "../../_components/ui";
 import {
   currentMonth,
   formatMonth,
@@ -34,15 +39,16 @@ export default async function DepensesPage({
       />
 
       <section className={cardClass}>
-        <h2 className="text-[26px] font-extrabold text-white">Dépenses</h2>
-        <p className="mt-3 inline-block rounded-full border border-plum-line bg-plum-field px-4 py-2 text-[15px] text-muted">
+        <p className={scriptClass}>ce qui sort</p>
+        <h2 className={`${titleClass} mt-2`}>Dépenses</h2>
+        <p className={`${pillClass} mt-4`}>
           {expenses.length} dépense{expenses.length > 1 ? "s" : ""} ·{" "}
-          <strong className="text-white">{formatEuros(total)}</strong>
+          <strong className="text-cream">{formatEuros(total)}</strong>
         </p>
         {expenses.length === 0 ? (
-          <p className="mt-5 text-center text-muted">Aucune dépense ce mois-ci.</p>
+          <p className="mt-8 text-center text-subtle">Aucune dépense ce mois-ci.</p>
         ) : (
-          <ul className="mt-5 space-y-2.5">
+          <ul className={`${listClass} mt-5`}>
             {expenses.map((expense) => (
               <ExpenseRow key={expense.id} expense={expense} />
             ))}
